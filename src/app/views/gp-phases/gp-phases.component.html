@@ -1,36 +1,39 @@
 <div class="container">
   <div *ngIf="project.id">
-    <button (click)="addproject(project.id)" class="btn btn-primary" type="button">Add phase to Project</button>
+    <div class="card-header d-flex justify-content-between">
+      <h5 class="card-title">Phases List</h5>
+      <i class="fa fa-plus-circle text-primary fa-2x" (click)="addproject(project.id)" title="add"></i>
+    </div>
   </div>
   <table class="table table-hover">
     <thead>
-    <tr>
-      <th>Code</th>
-      <th>Start Date</th>
-      <th>Status</th>
-      <th>Amount</th>
-      <th>Creation Date</th>
-      <th>Description</th>
-      <th>End Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+      <tr>
+        <th>Code</th>
+        <th>Start Date</th>
+        <th>Status</th>
+        <th>Amount</th>
+        <th>Creation Date</th>
+        <th>Description</th>
+        <th>End Date</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let phase of listPhases">
-      <td>{{phase.phaseCode}}</td>
-      <td>{{phase.startDate}}</td>
-      <td>{{phase.status}}</td>
-      <td>{{phase.amount}}</td>
-      <td>{{phase.creationDate}}</td>
-      <td>{{phase.description}}</td>
-      <td>{{phase.endDate}}</td>
-      <td>
-        <button (click)="edit(phase.id)" class="btn btn-primary" type="button">Edit</button>
-        <button (click)="delete(phase.id)" class="btn btn-danger" type="button">Delete</button>
-      </td>
-    </tr>
+      <tr *ngFor="let phase of listPhases">
+        <td>{{phase.phaseCode}}</td>
+        <td>{{phase.startDate}}</td>
+        <td>{{phase.status}}</td>
+        <td>{{phase.amount}}</td>
+        <td>{{phase.creationDate}}</td>
+        <td>{{phase.description}}</td>
+        <td>{{phase.endDate}}</td>
+        <td>
+          <i (click)="edit(phase.id)" class="fa fa-user-edit text-primary mx-3" title="edit"></i>
+          <i (click)="delete(phase.id)" class="fa fa-trash-alt text-danger" title="Delete"></i>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

@@ -4,70 +4,69 @@
       <h5 class="card-title text-center">
         {{ title }} address
       </h5>
-      <div class="card-body">
-        <form (ngSubmit)="save()" [formGroup]="addrForm">
-          <div class="row my-1">
-            <div class="form-group col-md-4">
-              <input class="form-control" formControlName="country" placeholder="Country" type="text">
-            </div>
-            <div class="form-group col-md-4">
-              <input class="form-control" formControlName="streetLabel" placeholder="Street label"
-                     type="text">
-            </div>
-            <div class="form-group col-md-4">
-              <input class="form-control" formControlName="streetNumber" placeholder="Street number"
-                     type="number">
-            </div>
-          </div>
-
-          <div class="row my-1">
-            <div class="form-group col-md">
-              <input class="form-control" formControlName="zipCode" placeholder="Zip code" type="number">
-            </div>
-            <div class="form-group col-md-4">
-              <select class="form-control"
-                      formControlName="gpOrganization">
-                <option [disabled]="true" [ngValue]="null">Choose organization</option>
-                <option *ngFor="let org of listOrganisations" [ngValue]="org" selected>
-                  {{org.name}}
-                </option>
-              </select>
-            </div>
-            <div class="form-group col-md-4">
-              <select class="form-control" formControlName="gpEmployee">
-                <option [disabled]="true" [ngValue]="null">Choose employee</option>
-                <option *ngFor="let emp of listEmployees" [ngValue]="emp">
-                  {{emp.lastname}}
-                </option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-
-            <label class="col-form-label pt-0">Is your principal Adress?</label>
-            <div class="col-md-6">
-
-              <div class="form-check">
-                <input [value]="1" checked class="form-check-input" formControlName="isMain" id="gridRadios1"
-                       type="radio">
-                <label class="form-check-label" for="gridRadios1">
-                  Yes
-                </label>
-              </div>
-              <div class="form-check">
-                <input [value]="0" class="form-check-input" formControlName="isMain" id="gridRadios2" type="radio">
-                <label class="form-check-label" for="gridRadios2">
-                  No
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex card-footer justify-content-center">
-            <button [disabled]="addrForm.invalid" class="btn btn-primary btn-sm mx-2" type="submit">Register</button>
-            <button class="btn btn-secondary btn-sm" type="reset">Reset</button>
-          </div>
-        </form>
-      </div>
     </div>
+    <div class="card-body">
+      <form (ngSubmit)="save()" [formGroup]="addrForm">
+        <div class="row my-1">
+          <div class="form-group col-md-4">
+            <input class="form-control" formControlName="country" placeholder="Country" type="text">
+          </div>
+          <div class="form-group col-md-4">
+            <input class="form-control" formControlName="streetLabel" placeholder="Street label" type="text">
+          </div>
+          <div class="form-group col-md-4">
+            <input class="form-control" formControlName="streetNumber" placeholder="Street number" type="number">
+          </div>
+        </div>
+
+        <div class="row my-1">
+          <div class="form-group col-md">
+            <input class="form-control" formControlName="zipCode" placeholder="Zip code" type="number">
+          </div>
+          <div class="form-group col-md-4">
+            <select class="form-control" formControlName="gpOrganization">
+              <option value="">Choisissez une organisation</option>
+              <option *ngFor="let org of listOrganisations" [ngValue]="org" [selected]="org.id===gpOrganization?.id">
+                {{org.name}}
+              </option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <select class="form-control" formControlName="gpEmployee">
+              <option [disabled]="true" [ngValue]="null">Choose employee</option>
+              <option *ngFor="let emp of listEmployees" [ngValue]="emp" [selected]="emp.id===employee?.id">
+                {{emp.lastname}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+
+          <label class="col-form-label pt-0">Is your principal Adress?</label>
+          <div class="col-md-6">
+
+            <div class="form-check">
+              <input [value]="1" checked class="form-check-input" formControlName="isMain" id="gridRadios1"
+                type="radio">
+              <label class="form-check-label" for="gridRadios1">
+                Yes
+              </label>
+            </div>
+            <div class="form-check">
+              <input [value]="0" class="form-check-input" formControlName="isMain" id="gridRadios2" type="radio">
+              <label class="form-check-label" for="gridRadios2">
+                No
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex card-footer justify-content-center">
+          <button [disabled]="addrForm.invalid" class="btn btn-primary btn-sm mx-2" type="submit">Register</button>
+          <button class="btn btn-secondary btn-sm" type="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- <pre>{{ addrForm.value | json }}</pre> -->
   </div>
 </div>

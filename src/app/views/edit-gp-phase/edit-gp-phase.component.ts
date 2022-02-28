@@ -1,11 +1,11 @@
-import {GpPhase} from './../../models/gp-phase';
-import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {GpProject} from 'src/app/models/gp-project';
-import {GpPhasesFormService} from 'src/app/forms/gp-phases-form.service';
-import {GpProjectService} from 'src/app/services/gp-project.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {GpPhaseService} from 'src/app/services/gp-phase.service';
+import { GpPhase } from './../../models/gp-phase';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { GpProject } from 'src/app/models/gp-project';
+import { GpPhasesFormService } from 'src/app/forms/gp-phases-form.service';
+import { GpProjectService } from 'src/app/services/gp-project.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GpPhaseService } from 'src/app/services/gp-phase.service';
 
 @Component({
   selector: 'app-edit-gp-phase',
@@ -16,7 +16,7 @@ export class EditGpPhaseComponent implements OnInit {
   phaseForm: FormGroup | any;
   phase!: GpPhase;
   idPhase!: number;
-  idProject!: number;
+  idProject!: number | undefined;
   project!: GpProject;
   listProject!: GpProject[];
   boolList: any[] = [];
@@ -58,8 +58,7 @@ export class EditGpPhaseComponent implements OnInit {
         this.listProject = res;
         console.log('+++++', this.listProject);
       },
-      (error) => {
-      }
+      (error) => {}
     );
   }
 
@@ -67,6 +66,8 @@ export class EditGpPhaseComponent implements OnInit {
     if (this.idPhase) {
       this.phaseServices.getByid(this.idPhase).subscribe((res) => {
         this.phase = res;
+        this.project = this.phase.gpProject;
+        this.idProject = this.project.id;
         this.phaseForm.patchValue(this.phase);
       });
     }
