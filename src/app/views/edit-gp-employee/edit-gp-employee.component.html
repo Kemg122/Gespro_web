@@ -8,10 +8,9 @@
         <form (ngSubmit)="save()" [formGroup]="empForm">
           <div class="row my-1">
             <div class="form-group col-md-4">
-              <input class="form-control" formControlName="fileNumber" placeholder="File number"
-                     type="text">
+              <input class="form-control" formControlName="fileNumber" placeholder="File number" type="text">
               <p *ngIf="f.fileNumber.touched && f.fileNumber.invalid"
-                 [ngClass]="f.fileNumber.invalid? 'text-danger':''">This field is required</p>
+                [ngClass]="f.fileNumber.invalid? 'text-danger':''">This field is required</p>
             </div>
             <div class="form-group col-md-4">
               <input class="form-control" formControlName="firstname" placeholder="Firstname" type="text">
@@ -29,12 +28,10 @@
               <input class="form-control" formControlName="login" placeholder="Login" type="text">
             </div>
             <div class="form-group col-md-4">
-              <input class="form-control" formControlName="password" placeholder="Password"
-                     type="password">
+              <input class="form-control" formControlName="password" placeholder="Password" type="password">
             </div>
             <div class="form-group col-md-4">
-              <input class="form-control" formControlName="phoneNumber" placeholder="Phone"
-                     type="text">
+              <input class="form-control" formControlName="phoneNumber" placeholder="Phone" maxlength="8" type="text">
             </div>
           </div>
           <div class="d-flex card-footer justify-content-center">
