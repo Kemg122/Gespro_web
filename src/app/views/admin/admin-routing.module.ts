@@ -1,6 +1,6 @@
-import {AdminComponent} from './admin.component';
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { AdminComponent } from './admin.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -21,18 +21,7 @@ const routes: Routes = [
             (m) => m.GpOrganisationsModule
           ),
       },
-      {
-        path: 'projects',
-        loadChildren: () =>
-          import('../gp-projects/gp-projects.module').then(
-            (m) => m.GpProjectsModule
-          ),
-      },
-      {
-        path: 'phases',
-        loadChildren: () =>
-          import('../gp-phases/gp-phases.module').then((m) => m.GpPhasesModule),
-      },
+
       {
         path: 'employees',
         loadChildren: () =>
@@ -48,5 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AdminRoutingModule {
-}
+export class AdminRoutingModule {}
