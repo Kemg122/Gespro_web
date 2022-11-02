@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title text-center">
+        {{ title }} Project
+      </h5>
+    </div>
+    <div class="card-body bg-light">
+      <form (ngSubmit)="save()" [formGroup]="projectForm">
+        <div class="row my-3">
+          <div class="form-group col-md-6">
+            <input autocomplete="projectCode" class="form-control" formControlName="projectCode"
+                   placeholder="Project Code" required type="text"/>
+          </div>
+          <div class="form-group col-md-6">
+            <input autocomplete="name" class="form-control" formControlName="name" placeholder="Name" required
+                   type="text"/>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="form-group col-md-4">
+            <input autocomplete="Amount" class="form-control" formControlName="amount" placeholder="amount" required
+                   title="Amount" type="number"/>
+          </div>
+          <div class="form-group col-md-8">
+            <input autocomplete="description" class="form-control" formControlName="description"
+                   placeholder="description" required type="text"/>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="form-group col-md-6">
+            <select class="form-control" formControlName="gpChefProjet">
+              <option value="">Choisir un Chef de projet</option>
+              <option *ngFor="let pm of gpChefProjets" [ngValue]="pm" [selected]="pm.id===gpProjectManager?.id">
+                {{ pm.firstname }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <select class="form-control" formControlName="gpOrganization">
+              <option value="">Choisir une Organization</option>
+              <option *ngFor="let item of gpOrganizations" [ngValue]="item" [selected]="item.id===organization?.id">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="form-group col-md-6">
+            <label for="startDate"> Start Date </label>
+            <input autocomplete="startDate" class="form-control" formControlName="startDate" id="startDate" required
+                   title="Start Date" type="date"/>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="endDate"> End Date </label>
+            <input autocomplete="endDate" class="form-control" formControlName="endDate" id="endDate" required
+                   title="End Date"
+                   type="date"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group text-center">
+            <button [disabled]="projectForm.invalid"
+                    class="btn btn-primary px-4" type="submit">
+              Ajouter
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
