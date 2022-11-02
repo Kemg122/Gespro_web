@@ -28,7 +28,6 @@ export class GpOrganisationsComponent implements OnInit {
     this.organisationService.getByid(id).subscribe(
       (res) => {
         this.gpOrganisation = res;
-        console.log(this.gpOrganisation);
       },
       (err) => {
       }
@@ -39,7 +38,6 @@ export class GpOrganisationsComponent implements OnInit {
     this.organisationService.getAll().subscribe(
       (res) => {
         this.gpOrganisations = res;
-        console.log(this.gpOrganisations);
       },
       (err) => {
       }

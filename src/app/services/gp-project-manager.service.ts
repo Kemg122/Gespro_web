@@ -7,7 +7,7 @@ import {CrudService} from './crud.service';
 @Injectable({
   providedIn: 'root',
 })
-export class GpProjectmanagerService extends CrudService<GpProjectManager> {
+export class GpProjectManagerService extends CrudService<GpProjectManager> {
   constructor(httpClient: HttpClient) {
     const url: string = environment.baseUrl;
     super(httpClient, `${url}/project-manager`);

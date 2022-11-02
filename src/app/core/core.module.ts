@@ -1,16 +1,20 @@
-import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import { GpAddressesModule } from '../views/gp-addresses/gp-addresses.module';
-import { EditGpAddressModule } from '../views/edit-gp-address/edit-gp-address.module';
-import { EditGpOrganisationModule } from '../views/edit-gp-organisation/edit-gp-organisation.module';
-import { GpOrganisationsModule } from '../views/gp-organisations/gp-organisations.module';
-import { EditGpEmployeeModule } from '../views/edit-gp-employee/edit-gp-employee.module';
-import { HomeModule } from '../views/home/home.module';
-import { ToastrModule } from 'ngx-toastr';
+import {NgModule, Optional, SkipSelf} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
+import {GpAddressesModule} from '../views/gp-addresses/gp-addresses.module';
+import {EditGpAddressModule} from '../views/edit-gp-address/edit-gp-address.module';
+import {EditGpOrganisationModule} from '../views/edit-gp-organisation/edit-gp-organisation.module';
+import {GpOrganisationsModule} from '../views/gp-organisations/gp-organisations.module';
+import {EditGpEmployeeModule} from '../views/edit-gp-employee/edit-gp-employee.module';
+import {HomeModule} from '../views/home/home.module';
+import {ToastrModule} from 'ngx-toastr';
+import {EditGpProjectManagerModule} from "../views/edit-gp-project-manager/edit-gp-project-manager.module";
+import {GpProjectManagersModule} from "../views/gp-project-managers/gp-project-managers.module";
+import {EditGpProjectModule} from "../views/edit-gp-project/edit-gp-project.module";
+import {GpProjectsModule} from "../views/gp-projects/gp-projects.module";
 
 @NgModule({
   declarations: [],
@@ -24,9 +28,10 @@ import { ToastrModule } from 'ngx-toastr';
     EditGpAddressModule,
     EditGpOrganisationModule,
     GpOrganisationsModule,
-    //GpProjectsRoutingModule,
-    //EditProjectModule,
-    //EditGpPhaseModule,
+    EditGpProjectManagerModule,
+    GpProjectManagersModule,
+    EditGpProjectModule,
+    GpProjectsModule,
     EditGpEmployeeModule,
     HomeModule,
     ToastrModule.forRoot(),

@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { EditGpAddressRoutingModule } from './edit-gp-address-routing.module';
-import { EditGpAddressComponent } from './edit-gp-address.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {EditGpAddressRoutingModule} from './edit-gp-address-routing.module';
+import {EditGpAddressComponent} from './edit-gp-address.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [EditGpAddressComponent],
@@ -14,4 +14,5 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
   ],
 })
-export class EditGpAddressModule {}
+export class EditGpAddressModule {
+}

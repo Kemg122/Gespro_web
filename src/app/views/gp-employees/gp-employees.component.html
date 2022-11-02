@@ -8,31 +8,31 @@
       <div class="card-body">
         <table class="table table-hover">
           <thead>
-            <tr>
-              <th>File number</th>
-              <th>Last name</th>
-              <th>First name</th>
-              <th>Email</th>
-              <th>Login</th>
-              <th>Phone</th>
-              <th>Creation date</th>
-              <th>Action</th>
-            </tr>
+          <tr>
+            <th>File number</th>
+            <th>Last name</th>
+            <th>First name</th>
+            <th>Email</th>
+            <th>Login</th>
+            <th>Phone</th>
+            <th>Creation date</th>
+            <th>Action</th>
+          </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let emp of employeeList">
-              <td>{{emp.fileNumber}}</td>
-              <td>{{emp.lastname}}</td>
-              <td>{{emp.firstname}}</td>
-              <td>{{emp.email}}</td>
-              <td>{{emp.login}}</td>
-              <td>{{emp.phoneNumber}}</td>
-              <td>{{emp.creationDate}}</td>
-              <td>
-                <i (click)="edit(emp.id)" class="fa fa-user-edit text-primary mx-3" title="edit"></i>
-                <i (click)="delete(emp.id)" class="fa fa-trash-alt text-danger" title="Delete"></i>
-              </td>
-            </tr>
+          <tr *ngFor="let emp of employeeList">
+            <td>{{emp.fileNumber}}</td>
+            <td>{{emp.lastname}}</td>
+            <td>{{emp.firstname}}</td>
+            <td>{{emp.email}}</td>
+            <td>{{emp.login}}</td>
+            <td>{{emp.phoneNumber}}</td>
+            <td>{{emp.creationDate}}</td>
+            <td>
+              <i (click)="edit(emp.id)" class="fa fa-user-edit text-primary mx-3" title="edit"></i>
+              <i (click)="delete(emp.id)" class="fa fa-trash-alt text-danger" title="Delete"></i>
+            </td>
+          </tr>
           </tbody>
         </table>
       </div>

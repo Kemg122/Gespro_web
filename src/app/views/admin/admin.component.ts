@@ -6,6 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  status: boolean = false;
 
   constructor() {
   }
@@ -13,4 +14,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  clickEvent() {
+    this.status = !this.status;
+  }
 }

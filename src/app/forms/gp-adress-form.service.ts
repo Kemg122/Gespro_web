@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {Injectable} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GpAdressFormService {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+  }
 
   adressForm() {
     return this.fb.group({
@@ -18,8 +19,8 @@ export class GpAdressFormService {
       zipCode: ['', [Validators.compose([Validators.required])]],
       country: ['', [Validators.compose([Validators.required])]],
       isMain: [1, [Validators.compose([Validators.required])]],
-      gpOrganization: [''],
-      gpEmployee: [null, Validators.required],
+      gpOrganization: [null],
+      gpEmployee: [null],
     });
   }
 }

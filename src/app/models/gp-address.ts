@@ -1,5 +1,5 @@
-import { GpEmployee } from './gp-employee';
-import { GpOrganization } from './gp-organization';
+import {GpEmployee} from './gp-employee';
+import {GpOrganization} from './gp-organization';
 
 export interface GpAddress {
   id?: number;

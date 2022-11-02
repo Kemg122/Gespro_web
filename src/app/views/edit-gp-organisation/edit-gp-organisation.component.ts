@@ -58,7 +58,6 @@ export class EditGpOrganisationComponent implements OnInit {
               this.router.navigate(['/admin/organisations/']);
             },
             (error) => {
-              console.log(error.error);
               this.alertService.error(`Item ${error.error.message.split(';', 1)}`, `${error.status}`);
             });
       } else {

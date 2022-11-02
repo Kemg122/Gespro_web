@@ -1,14 +1,14 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { GpAdressFormService } from 'src/app/forms/gp-adress-form.service';
-import { GpAddress } from 'src/app/models/gp-address';
-import { GpEmployee } from 'src/app/models/gp-employee';
-import { GpOrganization } from 'src/app/models/gp-organization';
-import { GpAddressService } from 'src/app/services/gp-address.service';
-import { GpEmployeeService } from 'src/app/services/gp-employee.service';
-import { GpOrganisationService } from 'src/app/services/gp-organisation.service';
-import { ToastrService } from 'ngx-toastr';
+import {Component, OnChanges, OnInit} from '@angular/core';
+import {FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {GpAdressFormService} from 'src/app/forms/gp-adress-form.service';
+import {GpAddress} from 'src/app/models/gp-address';
+import {GpEmployee} from 'src/app/models/gp-employee';
+import {GpOrganization} from 'src/app/models/gp-organization';
+import {GpAddressService} from 'src/app/services/gp-address.service';
+import {GpEmployeeService} from 'src/app/services/gp-employee.service';
+import {GpOrganisationService} from 'src/app/services/gp-organisation.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-gp-address',
@@ -24,6 +24,7 @@ export class EditGpAddressComponent implements OnInit, OnChanges {
   employee!: GpEmployee | undefined;
   title: string = 'New ';
   gpOrganization: GpOrganization | undefined;
+  isAdrForEmp: number = 0;
 
   constructor(
     private gpAddrFormService: GpAdressFormService,
@@ -34,8 +35,13 @@ export class EditGpAddressComponent implements OnInit, OnChanges {
     private gpEmpService: GpEmployeeService,
     private alertService: ToastrService
   ) {
-    this.idAddr = this.route.snapshot.params.id;
+    this.idAddr = this.route.snapshot.params['id'];
   }
+
+  get f() {
+    return this.addrForm.controls;
+  }
+
   ngOnInit(): void {
     this.addrForm = this.gpAddrFormService.adressForm();
     this.getAllEmployees();
@@ -45,19 +51,36 @@ export class EditGpAddressComponent implements OnInit, OnChanges {
     }
     this.ngOnChanges();
   }
+
   ngOnChanges(): void {
+    console.log('isAdrForm',this.isAdrForEmp)
+    switch (this.isAdrForEmp) {
+      case 0 : {
+        this.addrForm.get('gpOrganization')?.addValidators(Validators.required);
+        this.addrForm.get('gpEmployee')?.clearValidators();
+        this.addrForm.get('gpEmployee')?.reset();
+      }
+      break;
+      case 1 : {
+        this.addrForm.get('gpEmployee')?.addValidators(Validators.required);
+        this.addrForm.get('gpOrganization')?.clearValidators();
+        this.addrForm.get('gpOrganization')?.setValue(null);
+      }
+      break;
+      default :
+        break;
+    }
     if (this.idAddr) {
       this.gpAddrService.getByid(this.idAddr).subscribe((res) => {
         this.address = res;
+        if (res.gpEmployee !== null) {
+          this.isAdrForEmp = 1;
+        }
         this.addrForm.patchValue(this.address);
         this.gpOrganization = this.address.gpOrganization;
         this.employee = this.address.gpEmployee;
       });
     }
-  }
-
-  get f() {
-    return this.addrForm.controls;
   }
 
   getAllEmployees() {
@@ -112,5 +135,9 @@ export class EditGpAddressComponent implements OnInit, OnChanges {
         }
       );
     }
+  }
+
+  showValue() {
+    console.log("event", this.isAdrForEmp);
   }
 }

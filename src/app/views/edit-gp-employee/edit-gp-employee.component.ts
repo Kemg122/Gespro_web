@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { GpEmployeeFormService } from 'src/app/forms/gp-employee-form.service';
-import { GpEmployee } from 'src/app/models/gp-employee';
-import { GpEmployeeService } from 'src/app/services/gp-employee.service';
-import { ToastrService } from 'ngx-toastr';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {GpEmployeeFormService} from 'src/app/forms/gp-employee-form.service';
+import {GpEmployee} from 'src/app/models/gp-employee';
+import {GpEmployeeService} from 'src/app/services/gp-employee.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-gp-employee',
