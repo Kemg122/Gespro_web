@@ -22,16 +22,31 @@ body {
 
 #page-content-wrapper {
   min-width: 100vw;
+  background: #CCCCFF;
+  //background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
 
 .nav-section {
-  margin: 5px 0 5px -10px;
+  margin: 15px 0 15px -10px;
   width: auto;
   background: #002b5c;
   color: white;
   border-radius:10px 0 10px 0;
   padding: 5px;
   text-align: left;
+  font-size: 15px;
+  font-family: cursive;
+  box-shadow: 8px 8px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.navbar-nav .active {
+  color: #FBEAFF;
+  border-radius:5px;
+  background: #0081CF;
+}
+
+.card {
+  border-radius: 50px;
 }
 
 #wrapper.toggled #sidebar-wrapper {
