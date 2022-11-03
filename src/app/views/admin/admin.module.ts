@@ -8,8 +8,11 @@ import {FooterComponent} from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [AdminComponent, HeaderComponent, FooterComponent, SidebarComponent],
-  imports: [CommonModule, AdminRoutingModule],
+    declarations: [AdminComponent, HeaderComponent, FooterComponent, SidebarComponent],
+    imports: [CommonModule, AdminRoutingModule],
+    exports: [
+        SidebarComponent
+    ]
 })
 export class AdminModule {
 }

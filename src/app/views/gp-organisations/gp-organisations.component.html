@@ -1,40 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="card">
-      <div class="card-header d-flex justify-content-between">
-        <h5 class="card-title">Organizations List</h5>
-        <i class="fa fa-plus-circle text-primary fa-2x" routerLink="/admin/organisations/nouveau" title="add"></i>
-      </div>
-      <div class="card-body">
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Contact Name</th>
-            <th>Conatact Email</th>
-            <th>Address Web</th>
-            <th>Phone Number</th>
-            <th>Action</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let org of gpOrganisations">
-            <td>{{org.orgCode}}</td>
-            <td>{{org.name}}</td>
-            <td>{{org.contactName}}</td>
-            <td>{{org.contactEmail}}</td>
-            <td>{{org.adrWeb}}</td>
-            <td>{{org.phoneNumber}}</td>
-            <td>
-              <i (click)="edit(org.id)" class="fa fa-user-edit text-primary mx-3" title="edit"></i>
-              <i (click)="delete(org.id)" class="fa fa-trash-alt text-danger" title="Delete"></i>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<div class="row">
+  <div class="d-flex justify-content-between mb-2">
+    <h5 class="card-title">Organizations List</h5>
+    <i class="fa fa-plus-circle text-primary fa-2x" routerLink="/admin/organisations/nouveau" title="add"></i>
   </div>
-
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Contact Name</th>
+        <th>Conatact Email</th>
+        <th>Address Web</th>
+        <th>Phone Number</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let org of gpOrganisations">
+        <td>{{org.orgCode}}</td>
+        <td>{{org.name}}</td>
+        <td>{{org.contactName}}</td>
+        <td>{{org.contactEmail}}</td>
+        <td>{{org.adrWeb}}</td>
+        <td>{{org.phoneNumber}}</td>
+        <td>
+          <i (click)="edit(org.id)" class="fa fa-user-edit text-primary mx-3" title="edit"></i>
+          <i (click)="delete(org.id)" class="fa fa-trash-alt text-danger" title="Delete"></i>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

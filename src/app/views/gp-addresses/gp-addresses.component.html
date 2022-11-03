@@ -1,38 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="card">
-      <div class="card-header d-flex justify-content-between">
-        <h5 class="card-title">Adress List</h5>
-        <i class="fa fa-plus-circle text-primary fa-2x" routerLink="/admin/addresses/nouveau" title="add"></i>
-      </div>
-      <div class="card-body">
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th>Country</th>
-            <th>Street label</th>
-            <th>Street number</th>
-            <th>Zip code</th>
-            <th>Is main</th>
-            <th>Action</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let adr of gpAddresses">
-            <td>{{adr.country}}</td>
-            <td>{{adr.streetLabel}}</td>
-            <td>{{adr.streetNumber}}</td>
-            <td>{{adr.zipCode}}</td>
-            <td>{{adr.isMain}}</td>
-            <td>
-              <i (click)="edit(adr.id)" class="fa fa-user-edit text-primary mx-3" title="edit"></i>
-              <i (click)="delete(adr.id)" class="fa fa-trash-alt text-danger" title="Delete"></i>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
+<div class="row">
+<div class="d-flex justify-content-between mb-2">
+  <h5 class="text-black">Address List</h5>
+  <i class="fa fa-plus-circle text-primary fa-2x" routerLink="/admin/address/nouveau" title="add"></i>
+</div>
+<div class="row">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Country</th>
+      <th>Street label</th>
+      <th>Street number</th>
+      <th>Zip code</th>
+      <th>Is main</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let adr of gpAddresses">
+      <td>{{adr.country}}</td>
+      <td>{{adr.streetLabel}}</td>
+      <td>{{adr.streetNumber}}</td>
+      <td>{{adr.zipCode}}</td>
+      <td>{{adr.isMain}}</td>
+      <td>
+        <i (click)="edit(adr.id)" class="fa fa-user-edit text-primary mx-3" title="edit"></i>
+        <i (click)="delete(adr.id)" class="fa fa-trash-alt text-danger" title="Delete"></i>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 </div>
