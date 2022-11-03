@@ -3,7 +3,7 @@
   width: auto;
   background: #00D2FC;
   color: black;
-  border-radius:10px 10px 0 0;
+  border-radius: 10px 10px 0 0;
   padding: 5px;
   font-size: 15px;
   font-family: cursive;
@@ -13,7 +13,7 @@
 .body {
   display: flex;
   min-height: 20vh;
-  border: solid #00D2FC 2px ;
+  border: solid #00D2FC 2px;
   border-bottom: 0;
   border-top: 0;
   border-radius: 0;
@@ -22,6 +22,21 @@
   justify-content: center;
   box-shadow: none !important;
   color: black !important;
+}
+
+.sidebar {
+  //box-shadow: 8px 8px 2px 1px rgba(0, 0, 255, .2);
+  box-shadow: 10px 5px 5px #00D2FB;
+  background: white;
+  display: flex;
+  min-height: 80vh;
+}
+
+.content {
+  display: flex;
+  //background: black;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer {
