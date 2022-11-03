@@ -1,20 +1,40 @@
-<!--<div class="container">
-  <header class="header">
-    <app-header></app-header>
-  </header>
-  <body class="body mt-5">
-  <router-outlet></router-outlet>
-  </body>
-  <footer class="footer">m2i@2022</footer>
-</div>-->
-
 <div class="container">
   <div class="header text-center">GESPRO</div>
-<div class="row justify-content-between">
-  <div class="sidebar col-md-3 col-sm-12 rounded-3">Sidebar</div>
-  <div class="content col-md-8 col-sm-12 mt-sm-3">
-    <router-outlet></router-outlet>
+  <div class="row justify-content-between">
+    <div class="sidebar col-md-2 col-sm-12 rounded-3">
+      <ul class="navbar-nav">
+        <span class="nav-section"> <i class="fa-solid fa-users mx-2"></i>EMPLOYEES</span>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item"
+                                  routerLink="/admin/employees"
+                                  routerLinkActive="active">List Employees</a></li>
+          <li><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item" routerLink="/admin/employees/nouveau"
+                 routerLinkActive="active">New</a></li>
+        </ul>
+
+        <span class="nav-section"><i class="fa-solid fa-address-book mx-2"></i>ADDRESS</span>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item"
+                                  routerLink="/admin/addresses"
+                                  routerLinkActive="active">List Addresses</a></li>
+          <li><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item" routerLink="/admin/addresses/nouveau"
+                 routerLinkActive="active">New</a></li>
+        </ul>
+        <span class="nav-section"><i class="fa-solid fa-building mx-2"></i>ORGANISATIONS</span>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item"
+                                  routerLink="/admin/organisations"
+                                  routerLinkActive="active">List Organisations</a></li>
+          <li><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item"
+                 routerLink="/admin/organisations/nouveau"
+                 routerLinkActive="active">New</a></li>
+        </ul>
+
+      </ul>
+    </div>
+    <div class="content col-md-8 col-sm-12 mt-sm-3">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
-  <div class="footer">Footer</div>
+  <div class="footer">m2i@2022</div>
 </div>

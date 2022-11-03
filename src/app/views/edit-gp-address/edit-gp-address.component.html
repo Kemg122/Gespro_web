@@ -41,7 +41,7 @@
       </div>
       <div *ngIf="!isAdrForEmp" class="form-group col-md-4">
         <select class="form-control" formControlName="gpOrganization">
-          <option value="">Choisissez une organisation</option>
+          <option [disabled]="true" [ngValue]="null">Choisissez une organisation</option>
           <option *ngFor="let org of listOrganisations" [ngValue]="org" [selected]="org.id===gpOrganization?.id">
             {{org.name}}
           </option>

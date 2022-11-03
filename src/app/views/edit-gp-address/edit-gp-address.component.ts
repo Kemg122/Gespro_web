@@ -49,36 +49,20 @@ export class EditGpAddressComponent implements OnInit, OnChanges {
     if (this.idAddr) {
       this.title = 'Update ';
     }
+    this.showValue();
     this.ngOnChanges();
   }
 
   ngOnChanges(): void {
-    console.log('isAdrForm',this.isAdrForEmp)
-    switch (this.isAdrForEmp) {
-      case 0 : {
-        this.addrForm.get('gpOrganization')?.addValidators(Validators.required);
-        this.addrForm.get('gpEmployee')?.clearValidators();
-        this.addrForm.get('gpEmployee')?.reset();
-      }
-      break;
-      case 1 : {
-        this.addrForm.get('gpEmployee')?.addValidators(Validators.required);
-        this.addrForm.get('gpOrganization')?.clearValidators();
-        this.addrForm.get('gpOrganization')?.setValue(null);
-      }
-      break;
-      default :
-        break;
-    }
     if (this.idAddr) {
       this.gpAddrService.getByid(this.idAddr).subscribe((res) => {
         this.address = res;
         if (res.gpEmployee !== null) {
           this.isAdrForEmp = 1;
         }
-        this.addrForm.patchValue(this.address);
         this.gpOrganization = this.address.gpOrganization;
         this.employee = this.address.gpEmployee;
+        this.addrForm.patchValue(this.address);
       });
     }
   }
@@ -138,6 +122,21 @@ export class EditGpAddressComponent implements OnInit, OnChanges {
   }
 
   showValue() {
-    console.log("event", this.isAdrForEmp);
+    switch (this.isAdrForEmp) {
+      case 0 : {
+        this.addrForm.get('gpOrganization')?.addValidators(Validators.required);
+        this.addrForm.get('gpEmployee')?.clearValidators();
+        this.addrForm.get('gpEmployee')?.reset();
+      }
+        break;
+      case 1 : {
+        this.addrForm.get('gpEmployee')?.addValidators(Validators.required);
+        this.addrForm.get('gpOrganization')?.clearValidators();
+        this.addrForm.get('gpOrganization')?.reset();
+      }
+        break;
+      default :
+        break;
+    }
   }
 }
