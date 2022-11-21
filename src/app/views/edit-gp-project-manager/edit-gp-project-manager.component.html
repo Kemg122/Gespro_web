@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="d-flex justify-content-between mb-2">
+      <h5 class="text-black">{{ title }} project manager</h5>
+    </div>
+    <div class="row">
+      <form (ngSubmit)="save()" [formGroup]="projectManagerForm">
+        <div class="row my-1">
+          <div class="form-group col-md-4">
+            <input class="form-control" formControlName="fileNumber" placeholder="File number" type="text">
+            <p *ngIf="f.fileNumber.touched && f.fileNumber.invalid"
+               [ngClass]="f.fileNumber.invalid? 'text-danger':''">This field is required</p>
+          </div>
+          <div class="form-group col-md-4">
+            <input class="form-control" formControlName="firstname" placeholder="Firstname" type="text">
+          </div>
+          <div class="form-group col-md-4">
+            <input class="form-control" formControlName="lastname" placeholder="Lastname" type="text">
+          </div>
+        </div>
+  
+        <div class="row my-1">
+          <div class="form-group col-md-2">
+            <input class="form-control" formControlName="email" placeholder="Email" type="text">
+          </div>
+          <div class="form-group col-md-2">
+            <input class="form-control" formControlName="login" placeholder="Login" type="text">
+          </div>
+          <div class="form-group col-md-4">
+            <input class="form-control" formControlName="password" placeholder="Password" type="password">
+          </div>
+          <div class="form-group col-md-4">
+            <input class="form-control" formControlName="phoneNumber" maxlength="8" placeholder="Phone" type="text">
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+          <button [disabled]="projectManagerForm.invalid" class="btn btn-primary btn-sm mx-2" type="submit">Register</button>
+          <button class="btn btn-secondary btn-sm" type="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

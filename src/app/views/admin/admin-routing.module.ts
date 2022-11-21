@@ -27,6 +27,13 @@ const routes: Routes = [
           import('../gp-employees/gp-employees.module').then(
             (m) => m.GpEmployeesModule
           ),
+      },
+      {
+        path: 'projectManagers',
+        loadChildren: () =>
+          import('../gp-project-managers/gp-project-managers.module').then(
+            (m) => m.GpProjectManagersModule
+          ),
       }
     ],
   },

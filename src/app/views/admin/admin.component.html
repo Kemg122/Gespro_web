@@ -30,6 +30,16 @@
                  routerLinkActive="active">New</a></li>
         </ul>
 
+        <span class="nav-section"><i class="fa-solid fa-building mx-2"></i>PROJECT MANAGERS</span>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item"
+                                  routerLink="/admin/projectManagers"
+                                  routerLinkActive="active">List Project Managers</a></li>
+          <li><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item"
+                 routerLink="/admin/projectManagers/nouveau"
+                 routerLinkActive="active">New</a></li>
+        </ul>
+
       </ul>
     </div>
     <div class="content col-md-8 col-sm-12 mt-sm-3">

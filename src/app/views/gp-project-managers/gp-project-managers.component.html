@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="d-flex justify-content-between mb-2">
+      <h5 class="text-black">Project manager List</h5>
+      <i class="fa fa-plus-circle text-primary fa-2x" routerLink="/admin/project-managers/nouveau" title="add"></i>
+    </div>
+    <div class="row">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>File number</th>
+          <th>Last name</th>
+          <th>First name</th>
+          <th>Email</th>
+          <th>Login</th>
+          <th>Phone</th>
+          <th>Creation date</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let emp of projectManagerList">
+          <td>{{emp.fileNumber}}</td>
+          <td>{{emp.lastname}}</td>
+          <td>{{emp.firstname}}</td>
+          <td>{{emp.email}}</td>
+          <td>{{emp.login}}</td>
+          <td>{{emp.phoneNumber}}</td>
+          <td>{{emp.creationDate}}</td>
+          <td>
+            <i (click)="edit(emp.id)" class="fa fa-user-edit text-primary mx-3" title="edit"></i>
+            <i (click)="delete(emp.id)" class="fa fa-trash-alt text-danger" title="Delete"></i>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
