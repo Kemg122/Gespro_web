@@ -12,8 +12,7 @@ export interface GpProject {
   description?: string,
   name?: string,
   projectCode?: string,
-  gpPhases?: GpPhase[],
+ // gpPhases?: GpPhase[],
   gpChefProjet?: GpProjectManager,
   gpOrganization?: GpOrganization,
-
 }

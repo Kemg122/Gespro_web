@@ -11,6 +11,8 @@ import {GpOrganisationsModule} from '../views/gp-organisations/gp-organisations.
 import {EditGpEmployeeModule} from '../views/edit-gp-employee/edit-gp-employee.module';
 import {HomeModule} from '../views/home/home.module';
 import {ToastrModule} from 'ngx-toastr';
+import { GpProjectModule } from '../views/gp-project/gp-project.module';
+import { EditGpProjectModule } from '../views/edit-gp-project/edit-gp-project.module';
 
 @NgModule({
   declarations: [],
@@ -25,6 +27,8 @@ import {ToastrModule} from 'ngx-toastr';
     EditGpOrganisationModule,
     GpOrganisationsModule,
     EditGpEmployeeModule,
+    GpProjectModule,
+    EditGpProjectModule,
     HomeModule,
     ToastrModule.forRoot(),
   ],
