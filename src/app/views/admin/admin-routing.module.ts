@@ -33,6 +33,9 @@ const routes: Routes = [
         loadChildren: () =>
           import('../gp-project-managers/gp-project-managers.module').then(
             (m) => m.GpProjectManagersModule
+            ),
+      },
+      {
         path: 'projects',
         loadChildren: () =>
           import('../gp-project/gp-project.module').then(

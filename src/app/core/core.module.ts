@@ -30,6 +30,7 @@ import { EditGpProjectModule } from '../views/edit-gp-project/edit-gp-project.mo
     EditGpEmployeeModule,
     EditGpProjectManagerModule,
     GpProjectModule,
+    GpProjectModule,
     EditGpProjectModule,
     HomeModule,
     ToastrModule.forRoot(),
