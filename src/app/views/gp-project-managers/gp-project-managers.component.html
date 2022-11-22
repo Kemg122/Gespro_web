@@ -27,14 +27,23 @@
           <td>{{emp.login}}</td>
           <td>{{emp.phoneNumber}}</td>
           <td>{{emp.creationDate}}</td>
-          <td>{{emp.gpProjects}}</td>
           <td>
+            <i (click)="getProjectsByPM(emp.id)" class="fa fa text-primary mx-3" title="project" ></i>
             <i (click)="edit(emp.id)" class="fa fa-user-edit text-primary mx-3" title="edit"></i>
             <i (click)="delete(emp.id)" class="fa fa-trash-alt text-danger" title="Delete"></i>
           </td>
         </tr>
-        </tbody>
+        </tbody> 
       </table>
     </div>
   </div>
+
+  <div *ngIf="projectsList.length > 0 ">
+    <h5>Projet<span *ngIf="projectsList.length > 1">s</span> du manager {{emp.lastname}}</h5>
+  </div>
+
+  <hr>
+  <hr>
+
+  <app-gp-project></app-gp-project>
   

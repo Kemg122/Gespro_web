@@ -10,9 +10,16 @@ import { ToastrService } from "ngx-toastr";
   styleUrls: ['./gp-project.component.scss'],
 })
 export class GpProjectComponent implements OnInit {
+  
+
+  @Input()
+  projectByPM!: GpProject[];
+  
   gpProjects!: GpProject[];
 
-  constructor(private projectService: GpProjectService, private router: Router,
+  constructor(
+    private projectService: GpProjectService,
+    private router: Router,
     private alertService: ToastrService) {
   }
 

@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {Input, NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { GpProjectComponent } from './gp-project.component';
 
