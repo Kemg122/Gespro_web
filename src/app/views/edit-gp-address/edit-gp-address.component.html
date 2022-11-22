@@ -3,14 +3,14 @@
     <h5 class="text-black">{{ title }} address</h5>
   </div>
   <div class="row mb-3">
-    <label class="col-form-label">Créer une address pour un<span *ngIf="!isAdrForEmp">e</span>:</label>
+    <label class="col-form-label">Create an address for an :</label>
     <div class="col">
       <div class="form-check-inline">
         <input (change)="showValue()" [(ngModel)]="isAdrForEmp" [value]="0" checked class="form-check-input"
                id="gridRadiosEmp"
                type="radio">
         <label class="form-check-label px-1" for="gridRadiosEmp">
-          Organisation
+          Organization
         </label>
       </div>
       <div class="form-check-inline">
@@ -41,7 +41,7 @@
       </div>
       <div *ngIf="!isAdrForEmp" class="form-group col-md-4">
         <select class="form-control" formControlName="gpOrganization">
-          <option [disabled]="true" [ngValue]="null">Choisissez une organisation</option>
+          <option [disabled]="true" [ngValue]="null">Choose an organization</option>
           <option *ngFor="let org of listOrganisations" [ngValue]="org" [selected]="org.id===gpOrganization?.id">
             {{org.name}}
           </option>
@@ -49,7 +49,7 @@
       </div>
       <div *ngIf="isAdrForEmp" class="form-group col-md-4">
         <select class="form-control" formControlName="gpEmployee">
-          <option [disabled]="true" [ngValue]="null">Choose employee</option>
+          <option [disabled]="true" [ngValue]="null">Choose an employee</option>
           <option *ngFor="let emp of listEmployees" [ngValue]="emp" [selected]="emp.id===employee?.id">
             {{emp.lastname}}
           </option>

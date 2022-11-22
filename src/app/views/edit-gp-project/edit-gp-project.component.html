@@ -1,32 +1,9 @@
 <div class="row">
-    <div class="d-flex justify-content-between mb-2">
+    <div class="d-flex mb-2">
       <h5 class="text-black">{{ title }} project</h5>
     </div>
-  
-    <div class="row">
-      <form (ngSubmit)="save()" [formGroup]="projectForm">
+      <form (ngSubmit)="save()" [formGroup]="projectForm">        
         <div class="row my-1">
-          <div class="form-group col-md-4">
-            <input class="form-control" formControlName="amount" placeholder="amount" type="number">
-          </div>
-          <div class="form-group col-md-4">
-            <input class="form-control" formControlName="creationDate" maxlength="8" placeholder="creation date"
-            onfocus="(this.type='date')" type="text">
-          </div>
-        </div>
-        <div class="row my-1">
-          <div class="form-group col-md-4">
-            <input class="form-control" formControlName="startDate" maxlength="8" placeholder=" start date"
-            onfocus="(this.type='date')" type="text">
-          </div>
-          <div class="form-group col-md-4">
-            <input class="form-control" formControlName="endDate" placeholder="end Date" onfocus="(this.type='date')" type="text">
-          </div>
-         
-          <div class="form-group col-md-4">
-            <input class="form-control" formControlName="upDate" maxlength="8" placeholder="update"
-            onfocus="(this.type='date')" type="text">
-          </div>
           <div class="form-group col-md-4">
             <input class="form-control" formControlName="name" placeholder="name" type="text">
           </div>
@@ -36,22 +13,40 @@
           <div class="form-group col-md-4">
             <input class="form-control" formControlName="projectCode" placeholder="project code" type="text">
           </div>
-         <!-- <div class="form-group col-md-4">
-            <input class="form-control" formControlName="gpPhases" placeholder="phase project" type="text">
-          </div>-->
+        </div>
+        <div class="row my-1">          
           <div class="form-group col-md-4">
-            <input class="form-control" formControlName="gpChefProjet" placeholder="chef project" type="number">
+            <input class="form-control" formControlName="amount" placeholder="amount" type="number">
           </div>
           <div class="form-group col-md-4">
-            <input class="form-control" formControlName="gpOrganization" placeholder="organisation" type="number">
+            <input class="form-control" formControlName="startDate" placeholder=" start date" type="date">
+          </div>
+          <div class="form-group col-md-4">
+            <input class="form-control" formControlName="endDate" placeholder="end Date" type="date">
+          </div>
+        </div>
+        <div class="row my-1"> 
+          <div class="form-group col-md-4">
+            <select class="form-control" formControlName="gpChefProjet">
+              <option disabled ngValue="">Choose your project manager</option>
+              <option *ngFor="let projMan of listProjectManager" [ngValue]="projMan" [selected]="projMan.id===gpChefProjet?.id">
+                {{projMan.lastname}} {{projMan.firstname}}
+              </option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <select class="form-control" formControlName="gpOrganization">
+              <option disabled ngValue="">Choose an organization</option>
+              <option *ngFor="let org of listOrganisations" [ngValue]="org" [selected]="org.id===gpOrganization?.id">
+                {{org.name}}
+              </option>
+            </select>
           </div>
         </div>
         <div class="d-flex justify-content-center mt-3">
-          <button [disabled]="projectForm.invalid" class="btn btn-primary btn-sm mx-2" type="submit">Register
-          </button>
+          <button [disabled]="projectForm.invalid" class="btn btn-primary btn-sm mx-2" type="submit">Register</button>
           <button class="btn btn-secondary btn-sm" type="reset">Reset</button>
         </div>
       </form>
-    </div>
   </div>
   

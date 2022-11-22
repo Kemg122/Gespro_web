@@ -1,9 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ToastrService} from "ngx-toastr";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from "ngx-toastr";
 import { GpProjectFormService } from 'src/app/forms/gp-project-form.service';
+import { GpOrganization } from 'src/app/models/gp-organization';
 import { GpProject } from 'src/app/models/gp-project';
+import { GpProjectManager } from 'src/app/models/gp-project-manager';
+import { GpOrganisationService } from 'src/app/services/gp-organisation.service';
+import { GpProjectManagerService } from 'src/app/services/gp-project-manager.service';
 import { GpProjectService } from 'src/app/services/gp-project.service';
 
 @Component({
@@ -16,10 +20,16 @@ export class EditGpProjectComponent implements OnInit {
   projectForm!: FormGroup;
   project!: GpProject;
   idProj!: number;
+  listProjectManager!: GpProjectManager[];
+  gpChefProjet: GpProjectManager | undefined;
+  listOrganisations!: GpOrganization[];
+  gpOrganization: GpOrganization | undefined;
 
   constructor(
     private gpProjectFormService: GpProjectFormService,
     private gpProjService: GpProjectService,
+    private gpProjectManagerService: GpProjectManagerService,
+    private gpOrgService: GpOrganisationService,
     private route: ActivatedRoute,
     private router: Router,
     private alertService: ToastrService
@@ -28,21 +38,38 @@ export class EditGpProjectComponent implements OnInit {
     this.idProj = this.route.snapshot.params.id;
   }
 
+  ngOnInit(): void {
+
+    this.getAllProjectManager();
+    this.getAllOrganizations();
+    if (this.idProj) {
+      this.title = 'Update ';
+    }
+    this.ngOnChanges();
+  }
+
   get f() {
     return this.projectForm.controls;
   }
 
-  ngOnInit(): void {
-    this.populateForm();
-    if (this.idProj) {
-      this.title = 'Update ';
-    }
+  getAllProjectManager() {
+    this.gpProjectManagerService.getAll().subscribe((res) => {
+      this.listProjectManager = res;
+    });
   }
 
-  populateForm() {
+  getAllOrganizations() {
+    this.gpOrgService.getAll().subscribe((res) => {
+      this.listOrganisations = res;
+    });
+  }
+
+  ngOnChanges(): void {
     if (this.idProj) {
-      this.gpProjService.getByid(this.idProj).subscribe((response) => {
-        this.project = response;
+      this.gpProjService.getByid(this.idProj).subscribe((res) => {
+        this.project = res;
+        this.gpChefProjet = this.project.gpChefProjet;
+        this.gpOrganization = this.project.gpOrganization;
         this.projectForm.patchValue(this.project);
       });
     }
@@ -50,13 +77,17 @@ export class EditGpProjectComponent implements OnInit {
 
   save() {
     if (this.idProj) {
-      if (JSON.stringify(this.project) !== JSON.stringify(this.projectForm.value)) {
-        this.gpProjService
-          .update(this.projectForm.value, this.idProj)
-          .subscribe((res) => {
-              this.alertService.success(`Item ${res.projectCode} was updated`, 'Success');
-              this.router.navigate(['/admin/projects/']);
-            },
+      if (
+        JSON.stringify(this.project) !== JSON.stringify(this.projectForm.value)
+        ) {
+        this.gpProjService.update(this.projectForm.value, this.idProj).subscribe(
+          (res) => {
+            this.alertService.success(
+              `Item ${res.projectCode} was updated`,
+              'Success'
+            );
+            this.router.navigate(['/admin/projects/']);
+          },
             (error) => {
               this.alertService.error(`Item ${error.error.message.split(';', 1)}`, `${error.status}`);
             });
@@ -65,13 +96,14 @@ export class EditGpProjectComponent implements OnInit {
       }
     } else {
       this.gpProjService.create(this.projectForm.value).subscribe((res) => {
-          this.alertService.success(`Item ${res.projectCode} was created`, 'Success');
-          this.router.navigate(['/admin/projects/']);
-        },
+        this.alertService.success(`Item ${res.projectCode} was created`, 'Success');
+        this.router.navigate(['/admin/projects/']);
+      },
         (error) => {
           this.alertService.error(`Item ${error.error.message.split(';', 1)}`, `${error.status}`);
         });
     }
   }
+
 }
 
