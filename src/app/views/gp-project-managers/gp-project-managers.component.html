@@ -14,7 +14,6 @@
           <th>Login</th>
           <th>Phone</th>
           <th>Creation date</th>
-          <th>Projects</th>
           <th>Action</th>
         </tr>
         </thead>
@@ -28,7 +27,7 @@
           <td>{{emp.phoneNumber}}</td>
           <td>{{emp.creationDate}}</td>
           <td>
-            <i (click)="getProjectsByPM(emp.id)" class="fa fa text-primary mx-3" title="project" ></i>
+            <i (click)="getprojectsByPM(emp.id)" class="fa fa text-primary mx-3" title="project" ></i>
             <i (click)="edit(emp.id)" class="fa fa-user-edit text-primary mx-3" title="edit"></i>
             <i (click)="delete(emp.id)" class="fa fa-trash-alt text-danger" title="Delete"></i>
           </td>
@@ -38,12 +37,44 @@
     </div>
   </div>
 
+  <hr>
+ 
+  <!--
   <div *ngIf="projectsList.length > 0 ">
     <h5>Projet<span *ngIf="projectsList.length > 1">s</span> du manager {{emp.lastname}}</h5>
   </div>
+   -->
+   <!--
+   <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Project code</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Creation Date</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Update Date</th>
+      </tr>
+    </thead>
+      <tbody>
+        <tr *ngFor="let project of projectsList">
+          <td>{{project.projectCode}}</td>
+          <td>{{project.name}}</td>
+          <td>{{project.description}}</td>
+          <td>{{project.amount}}</td>
+          <td>{{project.creationDate}}</td>
+          <td>{{project.startDate}}</td>
+          <td>{{project.endDate}}</td>
+          <td>{{project.updateDate}}</td>
+        </tr>
 
-  <hr>
-  <hr>
+      </tbody>
 
-  <app-gp-project></app-gp-project>
+   </table>
+
+  -->
+  <app-gp-project [projectByPM]="projectsList"></app-gp-project>
+  
   

@@ -12,7 +12,11 @@ import {GpProjectComponent} from './gp-project.component';
     CommonModule,
     GpProjectRoutingModule,
     ReactiveFormsModule
+  ],
+  exports:[
+    GpProjectComponent
   ]
 })
 export class GpProjectModule {
+ 
 }
