@@ -10,7 +10,7 @@ export class GpProjectFormService {
 projectForm() {
     return this.fb.group({
       id: [''],
-      amount: ['', [Validators.compose([Validators.required, Validators.maxLength(5)])]],
+      amount: ['', [Validators.compose([Validators.required])]],
       creationDate: [new Date(), [Validators.compose([Validators.required])]],
       endDate: ['', [Validators.compose([Validators.required])]],
       startDate: ['', [Validators.compose([Validators.required])]],

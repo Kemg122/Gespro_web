@@ -5,6 +5,7 @@ import {GpProjectManagerFormService} from 'src/app/forms/gp-project-manager-form
 import {GpProjectManager} from 'src/app/models/gp-project-manager';
 import {GpProjectManagerService} from 'src/app/services/gp-project-manager.service';
 import {ToastrService} from 'ngx-toastr';
+import { GpProject } from 'src/app/models/gp-project';
 
 @Component({
   selector: 'app-edit-gp-project-manager',
@@ -16,13 +17,16 @@ export class EditGpProjectManagerComponent implements OnInit {
   projectManagerForm!: FormGroup;
   projectManager!: GpProjectManager;
   idEmp!: number;
+  listProjects!:GpProject[];
+  project!: GpProject | undefined;
 
   constructor(
     private gpEmpFormService: GpProjectManagerFormService,
     private gpEmpService: GpProjectManagerService,
     private route: ActivatedRoute,
     private router: Router,
-    private alertService: ToastrService
+    private alertService: ToastrService,
+    private grProjectService: GpProjectManagerService
   ) {
     this.projectManagerForm = this.gpEmpFormService.gpProjectManagerForm();
     this.idEmp = this.route.snapshot.params.id;
