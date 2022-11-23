@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GpProject } from 'src/app/models/gp-project';
 import { GpProjectService } from 'src/app/services/gp-project.service';
@@ -12,10 +12,10 @@ import { ToastrService } from "ngx-toastr";
 export class GpProjectComponent implements OnInit {
   
 
-  @Input()
-  projectByPM!: GpProject[];
+//  @Input()
+//  projectByPM!: GpProject[];
   
-  gpProjects!: GpProject[];
+  gpProjects: GpProject[] = [];
 
   constructor(
     private projectService: GpProjectService,
@@ -24,7 +24,8 @@ export class GpProjectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProjects();
+      this.getProjects();
+    
   }
 
   getProjects() {

@@ -18,6 +18,8 @@ export class GpProjectManagersComponent implements OnInit {
   projectManager!: GpProjectManager;
   projectManagerList!: GpProjectManager[];
   projectsList: GpProject[] = [];
+  namePM : string | undefined;
+
 
   constructor(
     private gpEmpFormService: GpProjectManagerFormService,
@@ -48,14 +50,20 @@ export class GpProjectManagersComponent implements OnInit {
     }
   }
 
-  getprojectsByPM(id : any) {
+  getprojectsByPM(id: any) {
       this.projectsList = [];
       this.gpProjectManagerService.getByid(id).subscribe(
         (res) => {
         if(res.gpProjects.length > 0) {
           this.projectsList = res.gpProjects;
+          this.namePM = res.lastname;
         }
       })
+  }
+
+  closeProjects(){
+    this.projectsList = [];
+    this.namePM = "";
   }
 
   getAllProjectManager() {
